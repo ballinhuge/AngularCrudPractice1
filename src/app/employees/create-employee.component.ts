@@ -11,6 +11,7 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
   styleUrls: ['./create-employee.component.css']
 })
 export class CreateEmployeeComponent implements OnInit {
+
   datePickerConfig: Partial<BsDatepickerConfig>;
   dateOfBirth: Date = new Date(2018, 0, 31);
   previewPhoto = false;
@@ -35,7 +36,7 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
   
   onShowPreviewClick(): void {
