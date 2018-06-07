@@ -62,20 +62,39 @@
           </option>
         </select>
       </div>
+
       <div class="row">
         <!-- Date Of Birth-->
         <div class="form-group col-md-5">
           <label for="dateOfBirth">Date Of Birth</label>
           <input id="dateOfBirth" name="dateOfBirth" [(ngModel)]="dateOfBirth" type="text" bsDatepicker [bsConfig]="datePickerConfig"
-            class="form-control" placeholder="dd/mm/yyyy" />
+            class="form-control" placement="right" placeholder="dd/mm/yyyy" />
         </div>
+
+        <!-- Photo Path -->
+        <div class="form-group">
+          <label for="photoPath">Photo Path</label>
+          <input id="photoPath" name="photoPath" [(ngModel)]="photoPath" type="text" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <button type="button" (click)="onShowPreviewClick()" class="btn btn-primary">
+            {{previewPhoto ? 'Hide Preview' : 'Show Preview'}}
+          </button>
+        </div>
+
+        <div class="form-group">
+          <img [src]="photoPath" height="200" width="200" *ngIf="previewPhoto" />
+        </div>
+
       </div>
 
     </div>
+
     <div class="panel-footer">
       <button type="submit" class="btn btn-primary">Save</button>
     </div>
-  </div>
+
 </form>
 
 Angular Generated Form Text: {{employeeForm.value | json}}
