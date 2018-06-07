@@ -7,18 +7,22 @@
     <div class="panel-body">
       <div class="form-group">
         <label for="fullName">Full Name</label>
-        <input required id="fullName" type="text" class="form-control" name="fullName" [(ngModel)]="fullName" />
+        <input required id="fullName" type="text" class="form-control" name="fullName" [(ngModel)]="fullName" #fullNameControl="ngModel"
+        />
       </div>
+      
       <!-- Email -->
       <div class="form-group">
         <label for="email">Email</label>
-        <input id="email" type="email" class="form-control" name="em" [(ngModel)]="email" />
+        <input required id="email" type="email" class="form-control" name="em" [(ngModel)]="email" />
       </div>
+
       <!-- Phone Number -->
       <div class="form-group">
         <label for="phoneNumber">Phone Number</label>
         <input id="phoneNumber" type="text" class="form-control" name="phoneNumber" [(ngModel)]="phoneNumber" />
       </div>
+
       <!-- Contact Preference -->
       <div class="form-group">
         <label>Contact Preference</label>
@@ -31,6 +35,7 @@
           </label>
         </div>
       </div>
+
       <!-- Gender Radio -->
       <div class="form-group">
         <label>Gender</label>
@@ -43,6 +48,7 @@
           </label>
         </div>
       </div>
+
       <!--Is Active Checkbox-->
       <div class="form-group">
         <div class- "form-control">
@@ -51,6 +57,7 @@
           </label>
         </div>
       </div>
+
       <!-- Department Dropdown-->
       <div class="form-group">
         <label for="department" class="">
