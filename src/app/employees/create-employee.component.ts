@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 })
 export class CreateEmployeeComponent implements OnInit {
 
+  isActive = true;
   constructor() { }
 
   ngOnInit() {
