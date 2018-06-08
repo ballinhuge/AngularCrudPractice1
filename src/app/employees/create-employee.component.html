@@ -6,20 +6,26 @@
     <!--  Name -->
     <div class="panel-body">
       <div class="form-group" [class.has-success]='name.valid && name.touched' [class.has-error]='name.invalid && name.touched'>
-        <label for="name" class="control-label"> Name</label>
+        <label for="name" class="control-label">Name</label>
         <input required id="name" type="text" class="form-control" name="name" [(ngModel)]="employee.name" #name="ngModel" />
         <span class="help-block" *ngIf="name.invalid && name.touched">
           Name is Required
         </span>
         <span class="help-block" *ngIf="name.valid && name.touched">
-          Name is valid
+          Name is validx
         </span>
       </div>
 
       <!-- Email -->
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input required id="email" type="email" class="form-control" name="em" [(ngModel)]="employee.email" />
+      <div class="form-group" [class.has-success]='email.valid && email.touched' [class.has-error]='email.invalid && email.touched'>
+        <label class="control-label" for="email">Email</label>
+        <input required [email]="employee.email !== ''" #email='ngModel' id="email" type="email" class="form-control" name="email" [(ngModel)]="employee.email" />
+        <span class="help-block" *ngIf='email.errors?.required && email.touched'>
+          Email is required
+        </span>
+        <span class="help-block" *ngIf='email.errors?.email && email.touched'>
+          Email is invalid
+        </span>
       </div>
 
       <!-- Phone Number -->
