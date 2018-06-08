@@ -5,10 +5,15 @@
     </div>
     <!-- Full Name -->
     <div class="panel-body">
-      <div class="form-group">
-        <label for="fullName">Full Name</label>
-        <input required id="fullName" type="text" class="form-control" name="fullName" [(ngModel)]="fullName" #fullNameControl="ngModel"
-        />
+      <div class="form-group" [class.has-success]='fullNameControl.valid && fullNameControl.touched' [class.has-error]='fullNameControl.invalid && fullNameControl.touched'>
+        <label for="fullName" class="control-label">Full Name</label>
+        <input required id="fullName" type="text" class="form-control" name="fullName" [(ngModel)]="fullName" #fullNameControl="ngModel"/>
+        <span class="help-block" *ngIf="fullNameControl.invalid && fullNameControl.touched">
+          Full Name is Required
+        </span>
+        <span class="help-block" *ngIf="fullNameControl.valid && fullNameControl.touched">
+          Full Name is valid
+        </span>
       </div>
       
       <!-- Email -->
@@ -31,7 +36,7 @@
             <input type="radio" name="contactPreference" value="email" [(ngModel)]="contactPreference" /> Email
           </label>
           <label class="form-control">
-            <input type="radio" name="contactPreference" value="phoneNumber" [(ngModel)]="contactPreference" />
+            <input type="radio" name="contactPreference" value="phoneNumber" [(ngModel)]="contactPreference" /> Phone Number
           </label>
         </div>
       </div>
@@ -99,9 +104,8 @@
     </div>
 
     <div class="panel-footer">
-      <button type="submit" class="btn btn-primary">Save</button>
+      <button type="submit" [disabled]='employeeForm.invalid' class="btn btn-primary">Save</button>
     </div>
-
 </form>
 
 Angular Generated Form Text: {{employeeForm.value | json}}
