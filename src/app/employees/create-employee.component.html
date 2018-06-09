@@ -90,8 +90,8 @@
         <label for="department" class="control-label">
           Department
         </label>
-        <select appSelectValidator #department='ngModel' class="form-control" id="department" name="department" [(ngModel)]="employee.department">
-          <option disabled [ngValue]="null">Select Department</option>
+        <select appSelectValidator="select" #department='ngModel' class="form-control" id="department" name="department" [(ngModel)]="employee.department">
+          <option value="select">Select Department</option>
           <option *ngFor="let department of departments" [value]="department.id">
             {{ department.name }}
           </option>
