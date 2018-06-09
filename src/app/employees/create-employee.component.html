@@ -90,13 +90,13 @@
         <label for="department" class="control-label">
           Department
         </label>
-        <select required #department='ngModel' class="form-control" id="department" name="department" [(ngModel)]="employee.department">
+        <select appSelectValidator #department='ngModel' class="form-control" id="department" name="department" [(ngModel)]="employee.department">
           <option disabled [ngValue]="null">Select Department</option>
           <option *ngFor="let department of departments" [value]="department.id">
             {{ department.name }}
           </option>
         </select>
-        <span class="help-block" *ngIf='deparment.touched && department.invalid'>
+        <span class="help-block" *ngIf='deparment.touched && department.errors?.defaultSelected'>
           Department is required
         </span>
       </div>
