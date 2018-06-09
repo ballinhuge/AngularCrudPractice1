@@ -86,15 +86,19 @@
       </div>
 
       <!-- Department Dropdown-->
-      <div class="form-group">
-        <label for="department" class="">
+      <div class="form-group" [class.has-error]='deparment.touched && department.invalid'>
+        <label for="department" class="control-label">
           Department
         </label>
-        <select class="form-control" id="department" name="department" [(ngModel)]="employee.department">
+        <select required #department='ngModel' class="form-control" id="department" name="department" [(ngModel)]="employee.department">
+          <option value="-1">Select Department</option>
           <option *ngFor="let department of departments" [value]="department.id">
             {{ department.name }}
           </option>
         </select>
+        <span class="help-block" *ngIf='deparment.touched && department.invalid'>
+          Department is required
+        </span>
       </div>
 
       <div class="row">
