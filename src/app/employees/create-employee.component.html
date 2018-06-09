@@ -91,7 +91,7 @@
           Department
         </label>
         <select required #department='ngModel' class="form-control" id="department" name="department" [(ngModel)]="employee.department">
-          <option value="-1">Select Department</option>
+          <option disabled [ngValue]="null">Select Department</option>
           <option *ngFor="let department of departments" [value]="department.id">
             {{ department.name }}
           </option>
