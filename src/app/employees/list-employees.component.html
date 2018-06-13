@@ -43,8 +43,13 @@
                 <div class="col-md-6">
                   Department
                 </div>
-                <div class="col-md-6">
-                  :{{employee.department}}
+                <div [ngSwitch]="employee.department" class="col-md-6">
+                  : 
+                  <span *ngSwitchCase="1">Help Case</span>
+                  <span *ngSwitchCase="2">HR</span>
+                  <span *ngSwitchCase="3">IT</span>
+                  <span *ngSwitchCase="4">Payroll</span>
+                  <span *ngSwitchDefault>N/A</span>
                 </div>
               </div>
               <div class="row">
