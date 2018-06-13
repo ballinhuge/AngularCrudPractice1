@@ -2,9 +2,12 @@
   <app-display-employee [employee]='employee'></app-display-employee>
 </div> -->
 
+<h1 *ngIf='dataFromChild'>
+  {{ dataFromChild?.name + dataFromChild?.gender }}
+</h1>
 <button (click)='nextEmployee()' class="btn btn-primary">
   View Next Employee
 </button>
 <br />
 <br />
-<app-display-employee [employeeId]='employeeToDisplay.id' [employee]='employeeToDisplay'></app-display-employee>
+<app-display-employee (notify)='handleNotify($event)' [employeeId]='employeeToDisplay.id' [employee]='employeeToDisplay'></app-display-employee>
