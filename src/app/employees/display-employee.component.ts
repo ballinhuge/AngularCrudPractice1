@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { Employee } from '../models/employee.model';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-display-employee',
@@ -7,7 +8,8 @@ import { Employee } from '../models/employee.model';
   styleUrls: ['./display-employee.component.css']
 })
 export class DisplayEmployeeComponent implements OnInit, OnChanges {
-  private _employee: Employee
+  @Input()
+  employeeId: number;
 
   @Input()
   get employee(): Employee {
@@ -19,20 +21,22 @@ export class DisplayEmployeeComponent implements OnInit, OnChanges {
     console.log(`Current : ${value}`);
     this._employee = value;
   }
+
+  private _employee: Employee
+
   constructor() { }
 
   ngOnInit() {
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const previousEmployee: Employee =
-      <Employee>changes.employee.previousValue;
-    const currentEmployee: Employee =
-      <Employee>changes.employee.currentValue;
+    for(const changeKey of Object.keys(changes)){
+      const change: SimpleChange = changes[changeKey];
+      const from: string = JSON.stringify(change.previousValue);
+      const to: string = JSON.stringify(change.currentValue);
 
-    console.log(`Previous: ${previousEmployee ? previousEmployee.name : 'NULL'}`);
-    console.log(`Current: ${currentEmployee ? currentEmployee.name : 'NULL'}`);
-
-    console.log(changes);
+      console.log(`${changeKey} change from ${from} to ${to}`);
+    }
   }
 }
