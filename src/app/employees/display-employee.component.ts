@@ -7,8 +7,18 @@ import { Employee } from '../models/employee.model';
   styleUrls: ['./display-employee.component.css']
 })
 export class DisplayEmployeeComponent implements OnInit, OnChanges {
+  private _employee: Employee
+
   @Input()
-  private employee: Employee;
+  get employee(): Employee {
+    return this._employee;
+  }
+
+  set employee(value: Employee) {
+    console.log(`Previous: ${this._employee ? this._employee.name : 'NULL'}`);
+    console.log(`Current : ${value}`);
+    this._employee = value;
+  }
   constructor() { }
 
   ngOnInit() {
@@ -25,5 +35,4 @@ export class DisplayEmployeeComponent implements OnInit, OnChanges {
 
     console.log(changes);
   }
-
 }
