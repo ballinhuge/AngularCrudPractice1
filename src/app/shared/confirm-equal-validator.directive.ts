@@ -1,5 +1,5 @@
-import { Validator, NG_VALIDATORS } from '@angular/forms';
-import { Directive } from '@angular/core';
+import { Validator, NG_VALIDATORS, AbstractControl, ValidationErrors } from '@angular/forms';
+import { Directive, Input } from '@angular/core';
 
 @Directive({
     selector: '[appConfirmEqualValidator]',
@@ -10,5 +10,16 @@ import { Directive } from '@angular/core';
     }]
 })
 export class ConfirmEqualValidatorDirective implements Validator {
+    @Input() appConfirmEqualValidatior: string;
 
+    validate(control: AbstractControl): ValidationErrors | null {
+        const controlToCompare:AbstractControl =
+            control.parent.get(this.appConfirmEqualValidatior);
+
+        if ((controlToCompare) && controlToCompare.value !== control.value) {
+            return { 'notEqual': true };
+        }
+
+        return null;
+    }
 }
