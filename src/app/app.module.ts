@@ -18,6 +18,7 @@ const appRoutes: Routes = [
   { path: 'list', component: ListEmployeesComponent },
   { path: 'create', component: CreateEmployeeComponent, canDeactivate: [CreateEmployeeCanDeactivateGuardService] },
   { path: '', redirectTo: '/list', pathMatch: 'full' },
+  { path: 'employees/:id', component: EmployeeDetailsComponent}
 ];
 
 @NgModule({
