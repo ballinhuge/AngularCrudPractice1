@@ -1,62 +1,64 @@
-<div class="panel-heading">
-  <h3 class="panel-title">{{employee.name}}</h3>
-</div>
-<div class="panel-body">
-  <div class="col-md-10">
-    <div class="row vertical-align">
-      <div class="col-md-4">
-        <img class="imageClass" [src]='employee.photoPath'>
-      </div>
-      <div class="col-md-8">
-        <div class="row">
-          <div class="col-md-6">
-            Gender
-          </div>
-          <div class="col-md-6">
-            :{{employee.gender}}
-          </div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{employee.name}}</h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-10">
+      <div class="row vertical-align">
+        <div class="col-md-4">
+          <img class="imageClass" [src]='employee.photoPath'>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            Name
-          </div>
-          <div class="col-md-6">
-            :{{employee.name}}
-          </div>
+        <div class="col-md-8">
           <div class="row">
             <div class="col-md-6">
-              Contact Preference
+              Gender
             </div>
             <div class="col-md-6">
-              :{{employee.contactPreference}}
+              :{{employee.gender}}
             </div>
           </div>
           <div class="row">
             <div class="col-md-6">
-              Date Of Birth
+              Name
             </div>
             <div class="col-md-6">
-              :{{employee.dateOfBirth | date}}
+              :{{employee.name}}
             </div>
             <div class="row">
               <div class="col-md-6">
-                Department
+                Contact Preference
               </div>
-              <div [ngSwitch]="employee.department" class="col-md-6">
-                : 
-                <span *ngSwitchCase="1">Help Case</span>
-                <span *ngSwitchCase="2">HR</span>
-                <span *ngSwitchCase="3">IT</span>
-                <span *ngSwitchCase="4">Payroll</span>
-                <span *ngSwitchDefault>N/A</span>
+              <div class="col-md-6">
+                :{{employee.contactPreference}}
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                Is Active
+                Date Of Birth
               </div>
               <div class="col-md-6">
-                :{{employee.isActive ? 'Yes' : 'No'}}
+                :{{employee.dateOfBirth | date}}
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  Department
+                </div>
+                <div [ngSwitch]="employee.department" class="col-md-6">
+                  :
+                  <span *ngSwitchCase="1">Help Case</span>
+                  <span *ngSwitchCase="2">HR</span>
+                  <span *ngSwitchCase="3">IT</span>
+                  <span *ngSwitchCase="4">Payroll</span>
+                  <span *ngSwitchDefault>N/A</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  Is Active
+                </div>
+                <div class="col-md-6">
+                  :{{employee.isActive ? 'Yes' : 'No'}}
+                </div>
               </div>
             </div>
           </div>
