@@ -127,8 +127,8 @@
         </div>
       </div>
 
-      <div ngModelGroup='passwordGroup' [class.has-error]='confirmPassword.touched && 
-      confirmPassword.invalid && !confirmPassword.errors?.required'>
+      <div ngModelGroup='passwordGroup' #passwordGroup='ngModelGroup' appConfirmEqualValidator
+       [class.has-error]='passwordGroup.errors?.notEqual && !confirmPassword.errors?.required'>
         <div class="form-group" [class.has-error]='password.touched && password.invalid'>
           <label for="password" class="control-label">Password</label>
           <input (input)='password.control.updateValueAndValidity()' name="password" required type="text" class="form-control" [(ngModel)]='employee.password'
@@ -140,13 +140,12 @@
 
         <div class="form-group" [class.has-error]='confirmPassword.touched && confirmPassword.invalid'>
           <label for="confirmPassword" class="control-label">Confirm Password</label>
-          <input name="confirmPassword" appConfirmEqualValidator="password" required type="text" class="form-control" [(ngModel)]='employee.confirmPassword'
-            #confirmPassword='ngModel'>
+          <input name="confirmPassword" required type="text" class="form-control" [(ngModel)]='employee.confirmPassword' #confirmPassword='ngModel'>
           <span class="help-block" *ngIf='confirmPassword.touched && confirmPassword.errors?.required'>
             Confirm Password is Required
           </span>
           <span class="help-block" *ngIf='confirmPassword.touched && 
-        confirmPassword.errors?.notEqual && !confirmPassword.errors?.required'>
+          passwordGroup.errors?.notEqual && !confirmPassword.errors?.required'>
             Password and Confirm password does not match
           </span>
         </div>
