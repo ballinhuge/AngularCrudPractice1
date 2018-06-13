@@ -10,6 +10,6 @@
 </button>
 <br />
 <br />
-<div (click)=' #h1Var.innerHTML = childComponent.getEmployeeNameAndGender()'>
+<div (click)='#h1Var.innerHTML = childComponent.getEmployeeNameAndGender()'>
   <app-display-employee #childComponent (notify)='handleNotify($event)' [employeeId]='employeeToDisplay.id' [employee]='employeeToDisplay'></app-display-employee>
 </div>

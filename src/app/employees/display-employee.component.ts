@@ -26,12 +26,11 @@ export class DisplayEmployeeComponent implements OnInit, OnChanges {
       const change: SimpleChange = changes[changeKey];
       const from: string = JSON.stringify(change.previousValue);
       const to: string = JSON.stringify(change.currentValue);
-
       console.log(`${changeKey} change from ${from} to ${to}`);
     }
   }
 
   getEmployeeNameAndGender(): string {
-   return `${this.employee.name} ${this.employee.gender}`;
+    return `${this.employee.name} ${this.employee.gender}`;
   }
 }
