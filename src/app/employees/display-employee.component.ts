@@ -10,17 +10,17 @@ import { Employee } from '../models/employee.model';
 export class DisplayEmployeeComponent implements OnInit, OnChanges {
   @Input()
   employeeId: number;
-  @Output()
-  notify: EventEmitter<Employee> = new EventEmitter<Employee>();
 
-  private _employee: Employee
+  private employee: Employee
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit() {
 
   }
- 
+
   ngOnChanges(changes: SimpleChanges): void {
     for (const changeKey of Object.keys(changes)) {
       const change: SimpleChange = changes[changeKey];
@@ -31,7 +31,7 @@ export class DisplayEmployeeComponent implements OnInit, OnChanges {
     }
   }
 
-  handleClick(): void {
-    this.notify.emit(this._employee);
+  getEmployeeNameAndGender(): string {
+   return `${this.employee.name} ${this.employee.gender}`;
   }
 }
