@@ -13,7 +13,7 @@ export class EmployeeService {
       contactPreference: 'Email',
       email: 'mark@pragimtech.com',
       dateOfBirth: new Date('10/25/1988'),
-      department: 'IT',
+      department: '3',
       isActive: true
     },
     {
@@ -23,7 +23,7 @@ export class EmployeeService {
       contactPreference: 'Phone',
       phoneNumber: 2345678908,
       dateOfBirth: new Date('11/20/1979'),
-      department: 'HR',
+      department: '2',
       isActive: true
     },
     {
@@ -33,12 +33,16 @@ export class EmployeeService {
       contactPreference: 'Phone',
       phoneNumber: 54723645726,
       dateOfBirth: new Date('3/25/1976'),
-      department: 'IT',
+      department: '3',
       isActive: false,
     }
   ];
 
   getEmployees(): Employee[] {
     return this.listEmployees;
+  }
+
+  save(employee: Employee): void {
+    this.listEmployees.push(employee);
   }
 }

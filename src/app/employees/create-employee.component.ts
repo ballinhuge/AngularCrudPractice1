@@ -2,6 +2,8 @@ import { Department } from '../models/department.model';
 import { Component, OnInit } from '@angular/core';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { Employee } from '../models/employee.model';
+import { EmployeeService } from './employee.service';
+import { Router } from '@angular/router';
 
 
 
@@ -35,7 +37,8 @@ export class CreateEmployeeComponent implements OnInit {
     { id: 5, name: 'Admin' }
   ];
 
-  constructor() {
+  constructor(private _employeeService: EmployeeService,
+    private _router: Router) {
     this.datePickerConfig =
       Object.assign({},
         {
@@ -53,6 +56,7 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   saveEmployeeForm(newEmployee: Employee): void {
-    console.log(newEmployee);
+    this._employeeService.save(this.employee);
+    this._router.navigate(['list']);
   }
 }
